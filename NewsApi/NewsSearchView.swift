@@ -7,62 +7,112 @@
 
 import SwiftUI
 
-struct News: Identifiable {
-    let id = UUID()
+enum NewsApiError: Error {
+    case invalidUrl
+    case invalidResponse
+    case invalidData
+}
+
+struct Article: Codable {
+    let source: Source
     let title: String
-    let description: String
+    let description: String?
+    let content: String
+    let publishedAt: String
+    let url: String?
+    let urlToImage: String?
+}
+
+struct APIResponse: Codable {
+    let articles: [Article]
+}
+
+struct Source: Codable {
+    let name: String
 }
 
 struct NewsSearchView: View {
     @State private var searchText = ""
+    @State private var articles: [Article] = []
     
-    func fetchNews(searchQuery: String) {
-        print("called")
-        let urlString = "https://newsapi.org/v2/everything?q=\(searchQuery)&apiKey=2f5531e5be544560a63a024de1a60350"
-        print(urlString)
-    }
-    
-    var body: some View {
-        ZStack {
-            BackgroundView(topColor: .pink, bottomColor: .white)
-            VStack {
-                AppTitle(appTitle: "News App")
-                Spacer().frame(height: 75)
-                HStack {
-                    TextField("Search", text: $searchText)
-                        .padding(.horizontal, 10)
-                        .font(.system(size: 24))
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .onSubmit {
-                            print("Entered text: \(searchText)")
-                        }
-                }
-                Spacer()
-            }
+    func fetchNews (searchQuery: String) async throws {
+        let endpoint = "https://newsapi.org/v2/everything?q=\(searchQuery)&apiKey=2f5531e5be544560a63a024de1a60350"
+        
+
+        guard let myUrl = URL(string: endpoint) else {
+            throw NewsApiError.invalidUrl
+        }
+        
+        let (data, response) = try await URLSession.shared.data(from: myUrl)
+        
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            throw NewsApiError.invalidResponse
+        }
+        do {
+            let result = try JSONDecoder().decode(APIResponse.self, from: data)
+            print(result.articles.count)
+            articles = result.articles
+            print(articles)
+            // print(result.articles)
+        } catch let decodingError {
+            print("Decoding error: \(decodingError)")
+            throw NewsApiError.invalidData
         }
     }
-}
-
-struct AppTitle: View {
-    var appTitle: String;
     
     var body: some View {
-        Text(appTitle)
-            .font(.system(size: 32, weight: .medium, design: .default))
-            .foregroundColor(.white)
-            .padding()
+        NavigationView {
+            ZStack {
+                BackgroundView(topColor: .pink, bottomColor: .white)
+                VStack {
+                    AppTitle(appTitle: "News App")
+                    Spacer().frame(height: 75)
+                    HStack {
+                        TextField("Search", text: $searchText)
+                            .padding(.horizontal, 10)
+                            .font(.system(size: 24))
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .onSubmit {
+                                print("Entered text: \(searchText)")
+                                Task{
+                                    do {
+                                        try await fetchNews(searchQuery: searchText)
+                                    } catch {
+                                        print("Error fetching news: \(error)")
+                                    }
+                                }
+                            }
+                    }
+                    Spacer()
+                    List(articles, id: \.title) { article in
+                        NavigationLink(destination: Text("Detail view for \(article.title)")) {
+                                NewsCard(article: article)
+                            }
+                    }
+                }
+            }
+        }.navigationTitle("News")
     }
 }
 
-struct BackgroundView: View {
-    var topColor: Color;
-    var bottomColor: Color;
-    
+struct NewsCard: View {
+    let article: Article
+
     var body: some View {
-        LinearGradient(gradient: Gradient(colors: [topColor, bottomColor]),
-                       startPoint:.topLeading,
-                       endPoint: .bottomLeading)
-        .edgesIgnoringSafeArea(.all)
+        VStack(alignment: .leading) {
+            Text(article.title)
+                .font(.headline)
+            if let description = article.description {
+                Text(description)
+                    .font(.subheadline)
+            } else {
+                Text("No description available") // or some default text
+            }
+        }
+        .padding()
+        .background(Color.gray.opacity(0.2))
+        .cornerRadius(10)
+        .padding(.horizontal)
     }
 }
 
