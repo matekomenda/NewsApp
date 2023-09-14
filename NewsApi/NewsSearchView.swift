@@ -63,7 +63,7 @@ struct NewsSearchView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                BackgroundView(topColor: .pink, bottomColor: .white)
+                BackgroundView(topColor: .pink, bottomColor: .white).zIndex(0)
                 VStack {
                     AppTitle(appTitle: "News App")
                     Spacer().frame(height: 75)
@@ -95,7 +95,7 @@ struct NewsSearchView: View {
     }
 }
 
-struct NewsCard: View {
+/*struct NewsCard: View {
     let article: Article
 
     var body: some View {
@@ -110,11 +110,48 @@ struct NewsCard: View {
             }
         }
         .padding()
-        .background(Color.gray.opacity(0.2))
+        .background(Color.blue.opacity(0.2))
+        .cornerRadius(10)
+        .padding(.horizontal)
+    }
+}*/
+struct NewsCard: View {
+    let article: Article
+
+    var body: some View {
+        HStack {
+            if let imageUrl = article.urlToImage, let url = URL(string: imageUrl), let data = try? Data(contentsOf: url) {
+                Image(uiImage: UIImage(data: data) ?? UIImage())
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                    .cornerRadius(10)
+            } else {
+                Image(systemName: "photo")
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                    .cornerRadius(10)
+            }
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text(article.title)
+                    .font(.headline)
+
+                if let description = article.description {
+                    Text(description)
+                        .font(.subheadline)
+                } else {
+                    Text("No description available") // or some default text
+                        .font(.subheadline)
+                }
+            }
+        }
+        .padding()
+        .background(Color.blue.opacity(0.2))
         .cornerRadius(10)
         .padding(.horizontal)
     }
 }
+
 
 struct NewsSearchView_Previews: PreviewProvider {
     static var previews: some View {

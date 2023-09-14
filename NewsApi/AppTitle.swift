@@ -14,6 +14,7 @@ struct AppTitle: View {
     var body: some View {
         Text(appTitle)
             .font(.system(size: 32, weight: .medium, design: .default))
+            .fontWeight(.bold)
             .foregroundColor(.white)
             .padding()
     }
