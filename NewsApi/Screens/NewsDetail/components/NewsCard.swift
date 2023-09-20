@@ -27,18 +27,17 @@ struct NewsCard: View {
     var body: some View {
         ScrollView{
             VStack(alignment: .leading, spacing: 16) {
-              if let imageUrl = article.urlToImage, let url = URL(string: imageUrl), let data = try? Data(contentsOf: url) {
-                  Image(uiImage: UIImage(data: data) ?? UIImage())
-                      .resizable()
-                      .aspectRatio(contentMode: .fill)
-                      .frame(maxWidth: .infinity, maxHeight: 200)
-                      .clipped()
-              } else {
-                  Image(systemName: "photo")
-                      .resizable()
-                      .frame(maxWidth: .infinity, maxHeight: 200)
-                      .cornerRadius(10)
-              }
+                AsyncImage(url: URL(string: article.urlToImage ?? "")) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .clipped()
+                } placeholder: {
+                    Rectangle()
+                        .foregroundColor(.secondary)
+                        .frame(width: .infinity, height: 200)
+                }
+                .frame(maxWidth: .infinity, maxHeight: 200)
 
               Text(truncatedTitle)
                   .font(.title)

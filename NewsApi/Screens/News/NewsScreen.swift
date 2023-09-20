@@ -26,6 +26,7 @@ struct NewsScreen: View {
     @State private var articles: [Article] = []
     @State private var isSearchingHappened: Bool = false
     @State private var isLoading: Bool = false
+    @EnvironmentObject private var appStore: AppStore
     
     var body: some View {
         NavigationView {
@@ -42,7 +43,7 @@ struct NewsScreen: View {
                             .progressViewStyle(CircularProgressViewStyle())
                             .padding(.bottom, 50)
                     } else if articles.isEmpty && isSearchingHappened {
-                            Text("No results found.")
+                        Text("No results found.")
                             .font(.headline)
                             .padding(.top, 20)
                     } else {
@@ -52,9 +53,16 @@ struct NewsScreen: View {
                             }
                         }.listStyle(PlainListStyle())
                     }
-                    }
+                }
             }
             .navigationTitle("News Search")
+            .foregroundColor(.black)
         }
+    }
+}
+
+struct NewsScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        NewsScreen()
     }
 }

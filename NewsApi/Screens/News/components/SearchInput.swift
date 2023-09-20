@@ -25,21 +25,16 @@ struct SearchInput: View {
     @Binding var isSearchingHappened: Bool
     @Binding var isLoading: Bool
     
-    init(articles: Binding<[Article]>, isSearchingHappened: Binding<Bool>, isLoading: Binding<Bool>) {
-        _articles = articles
-        _isSearchingHappened = isSearchingHappened
-        _isLoading = isLoading
-    }
-    
+
     func handleSearch() {
         if searchText.count < 3 {
             isSearchingHappened = false
             errorMessage = "Please write at least 3 characters for searching."
         } else {
             Task {
-                defer {
-                    isLoading = false
-                }
+              defer {
+                   isLoading = false
+               }
                 do {
                     isSearchingHappened = true
                     isLoading = true
@@ -67,6 +62,7 @@ struct SearchInput: View {
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
             throw NewsApiError.invalidResponse
         }
+        
         do {
             let result = try JSONDecoder().decode(APIResponse.self, from: data)
             print(result.articles.count)
@@ -84,7 +80,7 @@ struct SearchInput: View {
                     .padding(.horizontal, 10)
                     .font(.system(size: 24))
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .foregroundColor(.black)
+                    .foregroundColor(.white)
                     .onSubmit {
                         handleSearch()
                     }

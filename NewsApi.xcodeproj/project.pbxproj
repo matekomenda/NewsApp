@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B01B58672ABB1B2F0050BC32 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01B58662ABB1B2F0050BC32 /* AppStore.swift */; };
 		B0491C982AB057DB0027A178 /* NewsApiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0491C972AB057DB0027A178 /* NewsApiApp.swift */; };
 		B0491C9A2AB057DB0027A178 /* NewsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0491C992AB057DB0027A178 /* NewsApp.swift */; };
 		B0491C9C2AB057DC0027A178 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0491C9B2AB057DC0027A178 /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B01B58662ABB1B2F0050BC32 /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		B0491C942AB057DB0027A178 /* NewsApi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0491C972AB057DB0027A178 /* NewsApiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsApiApp.swift; sourceTree = "<group>"; };
 		B0491C992AB057DB0027A178 /* NewsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsApp.swift; sourceTree = "<group>"; };
@@ -81,6 +83,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B01B58652ABB1B130050BC32 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				B01B58662ABB1B2F0050BC32 /* AppStore.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
 		B0491C8B2AB057DB0027A178 = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +114,7 @@
 		B0491C962AB057DB0027A178 /* NewsApi */ = {
 			isa = PBXGroup;
 			children = (
+				B01B58652ABB1B130050BC32 /* Store */,
 				B0491CCC2AB4704F0027A178 /* Screens */,
 				B0491C992AB057DB0027A178 /* NewsApp.swift */,
 				B0491C972AB057DB0027A178 /* NewsApiApp.swift */,
@@ -319,6 +330,7 @@
 				B0491C982AB057DB0027A178 /* NewsApiApp.swift in Sources */,
 				B0491CC62AB4588B0027A178 /* NewsCard.swift in Sources */,
 				B0491CD22AB473790027A178 /* NewsDetail.swift in Sources */,
+				B01B58672ABB1B2F0050BC32 /* AppStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

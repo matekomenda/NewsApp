@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct NewsApiApp: App {
+    let appStore = AppStore()
+    
     var body: some Scene {
         WindowGroup {
             NewsApp()
+                .environmentObject(appStore)
         }
     }
 }
