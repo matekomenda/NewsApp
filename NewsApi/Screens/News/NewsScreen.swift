@@ -31,7 +31,7 @@ struct NewsScreen: View {
     var body: some View {
         NavigationView {
             ZStack {
-                BackgroundView(topColor: .white, bottomColor: .teal).zIndex(0)
+                BackgroundView(topColor: .gray, bottomColor: Color.black).zIndex(0)
                 VStack {
                     Spacer().frame(height: 25)
                     VStack {
@@ -51,7 +51,7 @@ struct NewsScreen: View {
                             NavigationLink(destination: NewsDetailScreen(article: article)) {
                                 Text(article.title)
                             }
-                        }.listStyle(PlainListStyle())
+                        }.listStyle(PlainListStyle()).foregroundColor(.white)
                     }
                 }
             }
