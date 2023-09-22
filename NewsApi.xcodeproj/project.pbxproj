@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B01B58672ABB1B2F0050BC32 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01B58662ABB1B2F0050BC32 /* AppStore.swift */; };
 		B01B58712ABB255C0050BC32 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01B58702ABB255C0050BC32 /* LoginScreen.swift */; };
 		B01B58872ABC3BF00050BC32 /* Neumorphic in Frameworks */ = {isa = PBXBuildFile; productRef = B01B58862ABC3BF00050BC32 /* Neumorphic */; };
-		B01B588E2ABC415E0050BC32 /* GoogleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01B588D2ABC415E0050BC32 /* GoogleLogin.swift */; };
+		B01B588E2ABC415E0050BC32 /* GoogleAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01B588D2ABC415E0050BC32 /* GoogleAuthService.swift */; };
 		B01B58952ABC476C0050BC32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B01B58942ABC476B0050BC32 /* GoogleService-Info.plist */; };
 		B01B58992ABC4FFE0050BC32 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B01B58982ABC4FFE0050BC32 /* FirebaseAnalytics */; };
 		B01B589B2ABC4FFE0050BC32 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = B01B589A2ABC4FFE0050BC32 /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -42,6 +41,8 @@
 		B01B58D02ABC50620050BC32 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = B01B58CF2ABC50620050BC32 /* GoogleSignIn */; };
 		B01B58D22ABC50620050BC32 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B01B58D12ABC50620050BC32 /* GoogleSignInSwift */; };
 		B01B58D42ABCBB180050BC32 /* GoogleUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01B58D32ABCBB180050BC32 /* GoogleUser.swift */; };
+		B01B58D92ABD9B930050BC32 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01B58D82ABD9B930050BC32 /* AppStore.swift */; };
+		B01B58DE2ABD9C620050BC32 /* RoundedProfilePictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01B58DD2ABD9C620050BC32 /* RoundedProfilePictureView.swift */; };
 		B0491C982AB057DB0027A178 /* NewsApiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0491C972AB057DB0027A178 /* NewsApiApp.swift */; };
 		B0491C9A2AB057DB0027A178 /* NewsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0491C992AB057DB0027A178 /* NewsApp.swift */; };
 		B0491C9C2AB057DC0027A178 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0491C9B2AB057DC0027A178 /* Assets.xcassets */; };
@@ -74,12 +75,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B01B58662ABB1B2F0050BC32 /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		B01B58702ABB255C0050BC32 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
-		B01B588D2ABC415E0050BC32 /* GoogleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLogin.swift; sourceTree = "<group>"; };
+		B01B588D2ABC415E0050BC32 /* GoogleAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthService.swift; sourceTree = "<group>"; };
 		B01B58942ABC476B0050BC32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B01B58962ABC47C90050BC32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B01B58D32ABCBB180050BC32 /* GoogleUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleUser.swift; sourceTree = "<group>"; };
+		B01B58D82ABD9B930050BC32 /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
+		B01B58DD2ABD9C620050BC32 /* RoundedProfilePictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedProfilePictureView.swift; sourceTree = "<group>"; };
 		B0491C942AB057DB0027A178 /* NewsApi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0491C972AB057DB0027A178 /* NewsApiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsApiApp.swift; sourceTree = "<group>"; };
 		B0491C992AB057DB0027A178 /* NewsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsApp.swift; sourceTree = "<group>"; };
@@ -152,14 +154,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B01B58652ABB1B130050BC32 /* Store */ = {
-			isa = PBXGroup;
-			children = (
-				B01B58662ABB1B2F0050BC32 /* AppStore.swift */,
-			);
-			path = Store;
-			sourceTree = "<group>";
-		};
 		B01B586E2ABB24F10050BC32 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,10 +173,26 @@
 		B01B588C2ABC41450050BC32 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B01B588D2ABC415E0050BC32 /* GoogleLogin.swift */,
+				B01B588D2ABC415E0050BC32 /* GoogleAuthService.swift */,
 				B01B58D32ABCBB180050BC32 /* GoogleUser.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		B01B58D72ABD9B820050BC32 /* AppStore */ = {
+			isa = PBXGroup;
+			children = (
+				B01B58D82ABD9B930050BC32 /* AppStore.swift */,
+			);
+			path = AppStore;
+			sourceTree = "<group>";
+		};
+		B01B58DC2ABD9C490050BC32 /* AppComponents */ = {
+			isa = PBXGroup;
+			children = (
+				B01B58DD2ABD9C620050BC32 /* RoundedProfilePictureView.swift */,
+			);
+			path = AppComponents;
 			sourceTree = "<group>";
 		};
 		B0491C8B2AB057DB0027A178 = {
@@ -208,10 +218,11 @@
 		B0491C962AB057DB0027A178 /* NewsApi */ = {
 			isa = PBXGroup;
 			children = (
+				B01B58DC2ABD9C490050BC32 /* AppComponents */,
+				B01B58D72ABD9B820050BC32 /* AppStore */,
 				B01B58962ABC47C90050BC32 /* Info.plist */,
 				B01B58942ABC476B0050BC32 /* GoogleService-Info.plist */,
 				B01B588C2ABC41450050BC32 /* Models */,
-				B01B58652ABB1B130050BC32 /* Store */,
 				B0491CCC2AB4704F0027A178 /* Screens */,
 				B0491C992AB057DB0027A178 /* NewsApp.swift */,
 				B0491C972AB057DB0027A178 /* NewsApiApp.swift */,
@@ -454,14 +465,15 @@
 				B0491C9A2AB057DB0027A178 /* NewsApp.swift in Sources */,
 				B0491CC82AB458D70027A178 /* SearchInput.swift in Sources */,
 				B0491CCF2AB470810027A178 /* NewsScreen.swift in Sources */,
+				B01B58DE2ABD9C620050BC32 /* RoundedProfilePictureView.swift in Sources */,
 				B0491CC42AB1C8AB0027A178 /* BackgroundView.swift in Sources */,
 				B0491C982AB057DB0027A178 /* NewsApiApp.swift in Sources */,
 				B0491CC62AB4588B0027A178 /* NewsCard.swift in Sources */,
-				B01B588E2ABC415E0050BC32 /* GoogleLogin.swift in Sources */,
+				B01B588E2ABC415E0050BC32 /* GoogleAuthService.swift in Sources */,
 				B01B58D42ABCBB180050BC32 /* GoogleUser.swift in Sources */,
 				B01B58712ABB255C0050BC32 /* LoginScreen.swift in Sources */,
+				B01B58D92ABD9B930050BC32 /* AppStore.swift in Sources */,
 				B0491CD22AB473790027A178 /* NewsDetail.swift in Sources */,
-				B01B58672ABB1B2F0050BC32 /* AppStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

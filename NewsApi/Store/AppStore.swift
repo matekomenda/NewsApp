@@ -9,6 +9,5 @@ import Foundation
 import SwiftUI
 
 class AppStore: ObservableObject {
-    @Published var googleUser = GoogleUser(email: "", profilePicUrl: "", givenName: "")
     @Published var isMenuOpen = false
 }

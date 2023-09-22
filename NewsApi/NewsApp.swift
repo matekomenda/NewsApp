@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct NewsApp: View {
-    @EnvironmentObject var googleLogin: GoogleLogin
+    @EnvironmentObject var googleLogin: GoogleAuthService
+    @EnvironmentObject var appStore: AppStore
     @State private var selectedTab: Tab = .login
     
     enum Tab {
@@ -17,25 +18,27 @@ struct NewsApp: View {
         case home
     }
     var body: some View {
-        TabView(selection: $selectedTab) {
-            if googleLogin.isLoggedIn {
-                LoginScreen()
-                    .tabItem {
-                        Label("Logout", systemImage: "rectangle.portrait.and.arrow.right.fill")
-                    }
-                    .tag(Tab.logout)
-            } else {
-                LoginScreen()
-                    .tabItem {
-                        Label("Login", systemImage: "person.fill")
-                    }
-                    .tag(Tab.login)
-            }
-            NewsScreen()
-                .tabItem {
-                    Label("News", systemImage: "house.fill")
+        NavigationView {
+            TabView(selection: $selectedTab) {
+                if googleLogin.isLoggedIn {
+                    LoginScreen()
+                        .tabItem {
+                            Label("Logout", systemImage: "rectangle.portrait.and.arrow.right.fill")
+                        }
+                        .tag(Tab.logout)
+                } else {
+                    LoginScreen()
+                        .tabItem {
+                            Label("Login", systemImage: "person.fill")
+                        }
+                        .tag(Tab.login)
                 }
-                .tag(Tab.home)
+                NewsScreen()
+                    .tabItem {
+                        Label("News", systemImage: "house.fill")
+                    }
+                    .tag(Tab.home)
+            }
         }
     }
 }

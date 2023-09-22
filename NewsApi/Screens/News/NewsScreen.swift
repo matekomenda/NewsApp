@@ -26,7 +26,6 @@ struct NewsScreen: View {
     @State private var articles: [Article] = []
     @State private var isSearchingHappened: Bool = false
     @State private var isLoading: Bool = false
-    @EnvironmentObject private var appStore: AppStore
     
     var body: some View {
         NavigationView {

@@ -11,12 +11,10 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class GoogleLogin: ObservableObject {
-    @Published var givenName: String = ""
-    @Published var profilePicUrl: String = ""
+class GoogleAuthService: ObservableObject {
+    @Published var googleUser = GoogleUser()
     @Published var isLoggedIn: Bool = false
     @Published var errorMessage: String = ""
-    @Published var email: String = ""
     
     init() {
         check()
@@ -26,17 +24,10 @@ class GoogleLogin: ObservableObject {
         if(GIDSignIn.sharedInstance.currentUser != nil){
             let user = GIDSignIn.sharedInstance.currentUser
             guard let user = user else { return }
-            let givenName = user.profile?.givenName
-            let email = user.profile?.email
-            let profilePicUrl = user.profile!.imageURL(withDimension: 100)!.absoluteString
-            self.givenName = givenName ?? ""
-            self.email = email ?? ""
-            self.profilePicUrl = profilePicUrl
+            googleUser.update(with: user)
             self.isLoggedIn = true
         } else {
             self.isLoggedIn = false
-            self.givenName = "Not Logged In"
-            self.profilePicUrl =  ""
         }
     }
     

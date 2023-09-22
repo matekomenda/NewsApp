@@ -9,7 +9,7 @@ import SwiftUI
 import GoogleSignInSwift
 
 struct LoginScreen: View {
-    @EnvironmentObject var googleLogin: GoogleLogin
+    @EnvironmentObject var googleAuthService: GoogleAuthService
     
     func handleSignInButton() {
         print("Hello google")
@@ -18,22 +18,22 @@ struct LoginScreen: View {
     var body: some View {
         ZStack {
             VStack {
-                if googleLogin.isLoggedIn {
+                if googleAuthService.isLoggedIn {
                     VStack {
                         Spacer()
-                        Text("Hello, \(googleLogin.givenName) again, good to see!")
+                        Text("Hello, \(googleAuthService.googleUser.givenName) again, good to see!")
                             .font(.title)
                             .fontWeight(.bold)
                             .multilineTextAlignment(.center)
                         Spacer()
-                        AsyncImage(url: URL(string: googleLogin.profilePicUrl))
+                        AsyncImage(url: URL(string: googleAuthService.googleUser.profilePicUrl))
                             .frame(width: 250, height: 250)
                             .clipShape(Circle())
                             .overlay(Circle().stroke(Color("ProfilePictureBorderColor"), lineWidth: 5))
                             .padding(.bottom, 20)
                         Spacer()
                         Button(action: {
-                            googleLogin.signOut()
+                            googleAuthService.signOut()
                         }) {
                             HStack {
                                 Image(systemName: "arrow.turn.up.left.circle")
@@ -58,7 +58,7 @@ struct LoginScreen: View {
                             .multilineTextAlignment(.center)
                         Spacer()
                         GoogleSignInButton(action: {
-                            googleLogin.signIn()
+                            googleAuthService.signIn()
                         })
                         .padding(.top, 20)
                         Spacer()

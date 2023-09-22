@@ -28,15 +28,16 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct NewsApiApp: App {
-    let appStore = AppStore()
-    @StateObject var googleUser: GoogleLogin =  GoogleLogin()
+    @StateObject var appStore: AppStore = AppStore()
+    @StateObject var googleAuthService: GoogleAuthService =  GoogleAuthService()
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
     
     var body: some Scene {
         WindowGroup {
             NewsApp()
+                .environmentObject(googleAuthService)
                 .environmentObject(appStore)
-                .environmentObject(googleUser)
         }
     }
 }

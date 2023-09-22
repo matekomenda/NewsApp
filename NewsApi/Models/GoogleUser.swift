@@ -7,28 +7,21 @@
 
 import Foundation
 import SwiftUI
+import GoogleSignIn
 
-class GoogleUser: Identifiable, ObservableObject {
-    public let id: UUID
-    private var givenName: String
-    private var profilePicUrl: String
-    private var email: String
+class GoogleUser: ObservableObject {
+    @Published var givenName: String = ""
+    @Published var profilePicUrl: String = ""
+    @Published var email: String = ""
     
-    
-    init(id: UUID = UUID(), givenName: String, profilePicUrl: String, email: String) {
-        self.id = id
+    func update(with user: GIDGoogleUser) {
+        let givenName = user.profile?.givenName ?? ""
+        let email = user.profile?.email ?? ""
+        let profilePicUrl = user.profile?.imageURL(withDimension: 100)?.absoluteString ?? ""
+        
         self.givenName = givenName
-        self.profilePicUrl = profilePicUrl
         self.email = email
+        self.profilePicUrl = profilePicUrl
     }
-    
-    func getGivenName() -> String { return self.givenName }
-    func setGivenName(givenName: String) -> Void {self.givenName = givenName }
-    
-    func getProfilePicUrl() -> String { return self.profilePicUrl }
-    func setProfilePicUrl(profilePicUrl: String) -> Void {self.profilePicUrl = profilePicUrl }
-    
-    func getEmail() -> String { return self.email }
-    func setEmail(email: String) -> Void {self.email = email }
-    
 }
+
