@@ -16,6 +16,7 @@ struct NewsApp: View {
         case login
         case logout
         case home
+        case article
     }
     var body: some View {
         NavigationView {
@@ -33,11 +34,19 @@ struct NewsApp: View {
                         }
                         .tag(Tab.login)
                 }
+                // if googleLogin.isLoggedIn {
+                    ArticleView()
+                        .tabItem {
+                            Label("Article", systemImage: "newspaper")
+                        }
+                        .tag(Tab.article)
+                // }
                 NewsScreen()
                     .tabItem {
                         Label("News", systemImage: "house.fill")
                     }
                     .tag(Tab.home)
+                
             }
         }
     }

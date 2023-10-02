@@ -25,7 +25,7 @@ struct NewsCard: View {
     }
 
     var body: some View {
-        ScrollView{
+        ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 AsyncImage(url: URL(string: article.urlToImage ?? "")) { image in
                     image

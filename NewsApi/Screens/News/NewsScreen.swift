@@ -54,11 +54,24 @@ struct NewsScreen: View {
                     }
                 }
             }
-            .navigationTitle("News Search")
+            .navigationTitle("News")
             .foregroundColor(.black)
+            .toolbar {
+                ToolbarItem() {
+                    NavigationLink(destination: LoginScreen()) {
+                        RoundedProfilePictureView()
+                    }
+                }
+                //                    Button(action: {
+                //
+                //                    }) {
+                //                        RoundedProfilePictureView()
+                //                    }
+            }
         }
     }
 }
+
 
 struct NewsScreen_Previews: PreviewProvider {
     static var previews: some View {
